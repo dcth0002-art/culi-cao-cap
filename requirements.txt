@@ -1,4 +1,3 @@
 ccxt
 python-dotenv
-asyncio
-requests
+pyTelegramBotAPI
