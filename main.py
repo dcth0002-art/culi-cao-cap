@@ -50,7 +50,7 @@ while True:
             # Logic 2: Gửi báo cáo Telegram khi chênh lệch >= 5$
             chenh_lech = abs(price_binance - price_okx)
             current_time = time.time()
-            if chenh_lech >= 1 and (current_time - last_alert_time > alert_cooldown):
+            if chenh_lech >= 30 and (current_time - last_alert_time > alert_cooldown):
                 message = (f"!!! CẢNH BÁO LỆCH GIÁ !!!\n\n"
                            f"Mức chênh lệch: {chenh_lech:.2f}$\n\n"
                            f"Binance: {price_binance}$\n"
