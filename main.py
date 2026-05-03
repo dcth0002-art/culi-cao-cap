@@ -35,7 +35,7 @@ SPREAD_ENTRY = 0.0100
 SPREAD_EXIT = 0.0002     
 SPREAD_STOP = 1.008
 
-UPDATE_INTERVAL = 1200   # 10 phút báo cáo Top Spread 1 lần
+UPDATE_INTERVAL = 600   # 10 phút báo cáo Top Spread 1 lần
 SCAN_INTERVAL = 1
 
 bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
@@ -49,8 +49,8 @@ def send_telegram(msg):
 class ArbitrageBotDemo:
     def __init__(self):
         self.exchanges = {
-            'binance': ccxt.binance({'enableRateLimit': False}),
-            'okx': ccxt.okx({'enableRateLimit': False})
+            'binance': ccxt.binance({'enableRateLimit': True}),
+            'okx': ccxt.okx({'enableRateLimit': True})
         }
         self.common_symbols = []
         self.positions = {}
