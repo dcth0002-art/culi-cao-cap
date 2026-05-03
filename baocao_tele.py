@@ -2,6 +2,7 @@
 # Mở terminal và chạy lệnh: pip install requests
 
 import requests
+import os
 
 # --- CẤU HÌNH BOT TELEGRAM ---
 # THAY THẾ CÁC GIÁ TRỊ DƯỚI ĐÂY
