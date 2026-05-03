@@ -4,6 +4,7 @@ import os
 import time
 from dotenv import load_dotenv
 import telebot
+import requests
 
 # Import logic demo từ các file ngoài
 from molenhdemo import xu_ly_vao_lenh
@@ -39,6 +40,15 @@ UPDATE_INTERVAL = 600   # 10 phút báo cáo Top Spread 1 lần
 SCAN_INTERVAL = 1
 
 bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
+
+def get_public_ip():
+    try:
+        ip = requests.get("https://api.ipify.org", timeout=5).text
+        print(f"🌐 IP hiện tại: {ip}")
+        return ip
+    except Exception as e:
+        print(f"Lỗi lấy IP: {e}")
+        return None
 
 def send_telegram(msg):
     try:
@@ -86,6 +96,11 @@ class ArbitrageBotDemo:
         except: return None
 
     async def run(self):
+        ip = get_public_ip()
+
+        if ip:
+            send_telegram(f"🌐 IP hiện tại: `{ip}`")
+
         await self.init_markets()
         send_telegram(f"🧪 *BẮT ĐẦU CHẾ ĐỘ TRÂY *\n💰 Vốn ban đầu: `{INITIAL_TOTAL_CAPITAL}$` ($5/sàn)\n⚙️ Đòn bẩy: `{LEVERAGE}x` | Phí: `$0.1` mỗi vòng.")
 
